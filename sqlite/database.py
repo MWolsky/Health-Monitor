@@ -50,3 +50,7 @@ class SqliteDataBase:
             statements (str): SQL statement provided in text
         """
         self.cur.executescript(statements)
+
+
+class HealthMonitorSQLiteDB(SqliteDataBase):
+    super().__init__(name='HealthMonitor')
