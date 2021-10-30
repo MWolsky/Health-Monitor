@@ -82,6 +82,7 @@ class Map:
     resource_state: int
 
 
+@dataclass
 class SegmentEffort:
     id: int
     resource_state: int
@@ -104,6 +105,7 @@ class SegmentEffort:
     hidden: bool
 
 
+@dataclass
 class Split:
     distance: Union[int, float]
     elapsed_time: Union[int, float]
@@ -116,6 +118,7 @@ class Split:
     pace_zone: int
 
 
+@dataclass
 class Lap:
     id: int
     resource_state: int
@@ -140,6 +143,7 @@ class Lap:
     pace_zone: int
 
 
+@dataclass
 class BestEffort:
     id: int
     resource_state: int
@@ -154,9 +158,10 @@ class BestEffort:
     start_index: Union[int, float]
     end_index: Union[int, float]
     pr_rank: Union[int, float, str]
-    achievement: list
+    achievements: list
 
 
+@dataclass
 class Segment:
     id: int
     resource_state: int
@@ -181,3 +186,29 @@ class Segment:
     private: bool
     hazardous: bool
     starred: bool
+
+
+@dataclass
+class AthleteStats:
+    biggest_ride_distance: Union[int, float]
+    biggest_climb_elevation_gain: Union[int, float]
+    recent_ride_totals: 'Totals'
+    all_ride_totals: 'Totals'
+    recent_run_totals: 'Totals'
+    all_run_totals: 'Totals'
+    recent_swim_totals: 'Totals'
+    all_swim_totals: 'Totals'
+    ytd_ride_totals: 'Totals'
+    ytd_run_totals: 'Totals'
+    ytd_swim_totals: 'Totals'
+
+
+@dataclass
+class Totals:
+    count: int
+    distance: Union[int, float]
+    moving_time: Union[int, float]
+    elapsed_time: Union[int, float]
+    elevation_gain: Union[int, float]
+    achievement_count: int = None
+

@@ -1,0 +1,31 @@
+{
+  "id": 29208357,
+  "resource_state": 2,
+  "name": "Hill rep migowo",
+  "activity_type": "Run",
+  "distance": 206.4,
+  "average_grade": 2,
+  "maximum_grade": 24.1,
+  "elevation_high": 100.6,
+  "elevation_low": 95.2,
+  "start_latlng": [
+    54.356608,
+    18.56901
+  ],
+  "end_latlng": [
+    54.354989,
+    18.567601
+  ],
+  "elevation_profile": null,
+  "start_latitude": 54.356608,
+  "start_longitude": 18.56901,
+  "end_latitude": 54.354989,
+  "end_longitude": 18.567601,
+  "climb_category": 0,
+  "city": "Gda\\u0144sk",
+  "state": "Pomorskie",
+  "country": "Poland",
+  "private": false,
+  "hazardous": false,
+  "starred": false
+}

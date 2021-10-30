@@ -1,7 +1,6 @@
-import utils.directories as hlp
-import config.constants as const
-import utils.errors as err
-from datetime import datetime
+import core.utils.directories as hlp
+import json
+import datetime
 
 
 def open_sql_file(filename: str) -> str:
@@ -11,19 +10,18 @@ def open_sql_file(filename: str) -> str:
         return f
 
 
-def validate_training_type(training_type: str):
-    if training_type in const.training_types:
-        return True
+def date_to_unix_timestamp(date: str, utc: bool = False) -> int:
+    """converts date in yyyy-mm-dd format to unix timestmap"""
+    if utc is False:
+        timestamp = datetime.datetime.strptime(date, "%Y-%m-%d").timestamp()
     else:
-        raise err.TrainingTypeError(training_type) 
+        timestamp = datetime.datetime.strptime(date, "%Y-%m-%d").replace(tzinfo=datetime.timezone.utc).timestamp()
+    return round(timestamp)
 
 
-def training_id(block: int, week: int, training_type: str, integer_suffixs: list) -> str:
-    if validate_training_type(training_type):
-        block_part = f'B{block}'
-        week_part = f'W{week}'
-        type_part = training_type[0].upper()
-        suffix_part = max(integer_suffixs) + 1
-        training_id = f'{block_part}{week_part}{type_part}{suffix_part}'
+def load_test_resource(resource_name: str):
+    resource_path = hlp.resources_tests_dir().joinpath(resource_name).with_suffix('.json')
+    with open(resource_path) as f:
+        resource_file = json.load(f)
+    return resource_file
 
-    return training_id
