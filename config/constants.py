@@ -3,7 +3,7 @@ from typing import List
 
 
 @dataclass
-class StravaConfig:
+class StravaResponseConfig:
     profile_id: int
     summary_activity_keys: List[str]
     detailed_activity_keys: List[str]
@@ -212,4 +212,4 @@ strava_config = {
     ]
 }
 
-strava = StravaConfig(**strava_config)
+strava = StravaResponseConfig(**strava_config)
