@@ -17,12 +17,13 @@ def validate_training_type(training_type: str):
     else:
         raise err.TrainingTypeError(training_type) 
 
+
 def training_id(block: int, week: int, training_type: str, integer_suffixs: list) -> str:
     if validate_training_type(training_type):
         block_part = f'B{block}'
         week_part = f'W{week}'
         type_part = training_type[0].upper()
         suffix_part = max(integer_suffixs) + 1
-    training_id = f'{block_part}{week_part}{type_part}{suffix_part}'
+        training_id = f'{block_part}{week_part}{type_part}{suffix_part}'
 
     return training_id
