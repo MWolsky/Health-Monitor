@@ -12,6 +12,7 @@ requests = "^2.26.0"
 python-dotenv = "^0.19.1"
 dataclass-wizard = "^0.15.2"
 typing-extensions = "^3.10.0"
+myfitnesspal = "^1.16.4"
 
 [tool.poetry.dev-dependencies]
 

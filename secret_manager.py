@@ -26,3 +26,16 @@ class StravaSecretManager(SecretManager):
     @property
     def strava_refresh_token(self):
         return self.get_secret(self.__refresh_token)
+
+
+class MyFitnessPalSecretManager(SecretManager):
+    __username = 'myfitnesspal_username'
+    __secret = 'myfitnesspal_secret'
+
+    @property
+    def my_fitness_pal_secret(self):
+        return self.get_secret(self.__secret)
+
+    @property
+    def my_fitness_pal_username(self):
+        return self.get_secret(self.__username)
