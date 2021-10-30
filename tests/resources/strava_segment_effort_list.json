@@ -1,0 +1,383 @@
+[
+    {
+      "id": 2877936841550652000,
+      "resource_state": 2,
+      "name": "Hill rep migowo",
+      "activity": {
+        "id": 6032690894,
+        "resource_state": 1
+      },
+      "athlete": {
+        "id": 77615538,
+        "resource_state": 1
+      },
+      "elapsed_time": 92,
+      "moving_time": 91,
+      "start_date": "2021-09-28T13:25:10Z",
+      "start_date_local": "2021-09-28T15:25:10Z",
+      "distance": 206.4,
+      "start_index": 206,
+      "end_index": 232,
+      "average_cadence": 79.6,
+      "average_heartrate": 154,
+      "max_heartrate": 161,
+      "segment": {
+        "id": 29208357,
+        "resource_state": 2,
+        "name": "Hill rep migowo",
+        "activity_type": "Run",
+        "distance": 206.4,
+        "average_grade": 2,
+        "maximum_grade": 24.1,
+        "elevation_high": 100.6,
+        "elevation_low": 95.2,
+        "start_latlng": [
+          54.356608,
+          18.56901
+        ],
+        "end_latlng": [
+          54.354989,
+          18.567601
+        ],
+        "elevation_profile": null,
+        "start_latitude": 54.356608,
+        "start_longitude": 18.56901,
+        "end_latitude": 54.354989,
+        "end_longitude": 18.567601,
+        "climb_category": 0,
+        "city": "Gda\\u0144sk",
+        "state": "Pomorskie",
+        "country": "Poland",
+        "private": false,
+        "hazardous": false,
+        "starred": false
+      },
+      "pr_rank": null,
+      "achievements": [
+        {
+          "type_id": 7,
+          "type": "segment_effort_count_leader",
+          "rank": 1,
+          "effort_count": 6
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "id": 2877936841548770000,
+      "resource_state": 2,
+      "name": "PKMka spierdoli\\u0142a",
+      "activity": {
+        "id": 6032690894,
+        "resource_state": 1
+      },
+      "athlete": {
+        "id": 77615538,
+        "resource_state": 1
+      },
+      "elapsed_time": 407,
+      "moving_time": 377,
+      "start_date": "2021-09-28T13:30:40Z",
+      "start_date_local": "2021-09-28T15:30:40Z",
+      "distance": 1283,
+      "start_index": 295,
+      "end_index": 385,
+      "average_cadence": 76.7,
+      "average_heartrate": 147.9,
+      "max_heartrate": 155,
+      "segment": {
+        "id": 19029516,
+        "resource_state": 2,
+        "name": "PKMka spierdoli\\u0142a",
+        "activity_type": "Run",
+        "distance": 1283,
+        "average_grade": -2.5,
+        "maximum_grade": 10.8,
+        "elevation_high": 95,
+        "elevation_low": 56.4,
+        "start_latlng": [
+          54.357024,
+          18.559802
+        ],
+        "end_latlng": [
+          54.364905,
+          18.572032
+        ],
+        "elevation_profile": null,
+        "start_latitude": 54.357024,
+        "start_longitude": 18.559802,
+        "end_latitude": 54.364905,
+        "end_longitude": 18.572032,
+        "climb_category": 0,
+        "city": "Gda\\u0144sk",
+        "state": "pomorskie",
+        "country": "Poland",
+        "private": false,
+        "hazardous": false,
+        "starred": false
+      },
+      "pr_rank": null,
+      "achievements": [
+        {
+          "type_id": 7,
+          "type": "segment_effort_count_leader",
+          "rank": 1,
+          "effort_count": 7
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "id": 2877936841551756000,
+      "resource_state": 2,
+      "name": "Droga technologiczna",
+      "activity": {
+        "id": 6032690894,
+        "resource_state": 1
+      },
+      "athlete": {
+        "id": 77615538,
+        "resource_state": 1
+      },
+      "elapsed_time": 220,
+      "moving_time": 193,
+      "start_date": "2021-09-28T13:32:01Z",
+      "start_date_local": "2021-09-28T15:32:01Z",
+      "distance": 665,
+      "start_index": 312,
+      "end_index": 361,
+      "average_cadence": 74.7,
+      "average_heartrate": 146.3,
+      "max_heartrate": 152,
+      "segment": {
+        "id": 22809932,
+        "resource_state": 2,
+        "name": "Droga technologiczna",
+        "activity_type": "Run",
+        "distance": 665,
+        "average_grade": -2,
+        "maximum_grade": 6.9,
+        "elevation_high": 93.4,
+        "elevation_low": 77.1,
+        "start_latlng": [
+          54.357828,
+          18.563067
+        ],
+        "end_latlng": [
+          54.361643,
+          18.570523
+        ],
+        "elevation_profile": null,
+        "start_latitude": 54.357828,
+        "start_longitude": 18.563067,
+        "end_latitude": 54.361643,
+        "end_longitude": 18.570523,
+        "climb_category": 0,
+        "city": "Gda\\u0144sk",
+        "state": "pomorskie",
+        "country": "Poland",
+        "private": false,
+        "hazardous": false,
+        "starred": false
+      },
+      "pr_rank": null,
+      "achievements": [
+        {
+          "type_id": 7,
+          "type": "segment_effort_count_leader",
+          "rank": 1,
+          "effort_count": 7
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "id": 2877936841549304300,
+      "resource_state": 2,
+      "name": "Skr\\u00f3t na Srebrzysko",
+      "activity": {
+        "id": 6032690894,
+        "resource_state": 1
+      },
+      "athlete": {
+        "id": 77615538,
+        "resource_state": 1
+      },
+      "elapsed_time": 67,
+      "moving_time": 67,
+      "start_date": "2021-09-28T13:41:06Z",
+      "start_date_local": "2021-09-28T15:41:06Z",
+      "distance": 188.4,
+      "start_index": 437,
+      "end_index": 451,
+      "average_cadence": 78.8,
+      "average_heartrate": 154.1,
+      "max_heartrate": 159,
+      "segment": {
+        "id": 20166648,
+        "resource_state": 2,
+        "name": "Skr\\u00f3t na Srebrzysko",
+        "activity_type": "Run",
+        "distance": 188.4,
+        "average_grade": 6.9,
+        "maximum_grade": 19,
+        "elevation_high": 60.7,
+        "elevation_low": 47.7,
+        "start_latlng": [
+          54.370583,
+          18.573443
+        ],
+        "end_latlng": [
+          54.371433,
+          18.575872
+        ],
+        "elevation_profile": null,
+        "start_latitude": 54.370583,
+        "start_longitude": 18.573443,
+        "end_latitude": 54.371433,
+        "end_longitude": 18.575872,
+        "climb_category": 0,
+        "city": "Gda\\u0144sk",
+        "state": "pomorskie",
+        "country": "Poland",
+        "private": false,
+        "hazardous": false,
+        "starred": false
+      },
+      "pr_rank": 2,
+      "achievements": [
+        {
+          "type_id": 3,
+          "type": "pr",
+          "rank": 2
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "id": 2877936841550232000,
+      "resource_state": 2,
+      "name": "Ucieczka z psychiatryka",
+      "activity": {
+        "id": 6032690894,
+        "resource_state": 1
+      },
+      "athlete": {
+        "id": 77615538,
+        "resource_state": 1
+      },
+      "elapsed_time": 293,
+      "moving_time": 292,
+      "start_date": "2021-09-28T13:42:28Z",
+      "start_date_local": "2021-09-28T15:42:28Z",
+      "distance": 955,
+      "start_index": 454,
+      "end_index": 514,
+      "average_cadence": 80.7,
+      "average_heartrate": 150.6,
+      "max_heartrate": 163,
+      "segment": {
+        "id": 19029538,
+        "resource_state": 2,
+        "name": "Ucieczka z psychiatryka",
+        "activity_type": "Run",
+        "distance": 955,
+        "average_grade": -2.7,
+        "maximum_grade": 7.8,
+        "elevation_high": 65.1,
+        "elevation_low": 36.3,
+        "start_latlng": [
+          54.371621,
+          18.576157
+        ],
+        "end_latlng": [
+          54.378286,
+          18.584497
+        ],
+        "elevation_profile": null,
+        "start_latitude": 54.371621,
+        "start_longitude": 18.576157,
+        "end_latitude": 54.378286,
+        "end_longitude": 18.584497,
+        "climb_category": 0,
+        "city": "Gda\\u0144sk",
+        "state": "pomorskie",
+        "country": "Poland",
+        "private": false,
+        "hazardous": false,
+        "starred": false
+      },
+      "pr_rank": 1,
+      "achievements": [
+        {
+          "type_id": 3,
+          "type": "pr",
+          "rank": 1
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "id": 2877936841549756000,
+      "resource_state": 2,
+      "name": "Kr\\u00f3tki partyzant",
+      "activity": {
+        "id": 6032690894,
+        "resource_state": 1
+      },
+      "athlete": {
+        "id": 77615538,
+        "resource_state": 1
+      },
+      "elapsed_time": 237,
+      "moving_time": 234,
+      "start_date": "2021-09-28T13:49:13Z",
+      "start_date_local": "2021-09-28T15:49:13Z",
+      "distance": 768.5,
+      "start_index": 540,
+      "end_index": 602,
+      "average_cadence": 80.2,
+      "average_heartrate": 159.8,
+      "max_heartrate": 168,
+      "segment": {
+        "id": 21998220,
+        "resource_state": 2,
+        "name": "Kr\\u00f3tki partyzant",
+        "activity_type": "Run",
+        "distance": 768.5,
+        "average_grade": -0.6,
+        "maximum_grade": 4.8,
+        "elevation_high": 31.5,
+        "elevation_low": 23.4,
+        "start_latlng": [
+          54.379477,
+          18.58991
+        ],
+        "end_latlng": [
+          54.37844,
+          18.601448
+        ],
+        "elevation_profile": null,
+        "start_latitude": 54.379477,
+        "start_longitude": 18.58991,
+        "end_latitude": 54.37844,
+        "end_longitude": 18.601448,
+        "climb_category": 0,
+        "city": null,
+        "state": null,
+        "country": null,
+        "private": false,
+        "hazardous": false,
+        "starred": false
+      },
+      "pr_rank": 2,
+      "achievements": [
+        {
+          "type_id": 3,
+          "type": "pr",
+          "rank": 2
+        }
+      ],
+      "hidden": false
+    }
+]

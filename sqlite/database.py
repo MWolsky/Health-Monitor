@@ -1,7 +1,6 @@
-import logging
 import sqlite3 as sql3
 from typing import List, Union, Dict, Tuple
-from utils.helpers import open_sql_file
+from core.utils.helpers import open_sql_file
 from logging import getLogger
 logger = getLogger(__name__)
 

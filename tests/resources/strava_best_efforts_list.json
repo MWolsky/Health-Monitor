@@ -1,0 +1,156 @@
+[
+    {
+      "id": 14250234439,
+      "resource_state": 2,
+      "name": "400m",
+      "activity": {
+        "id": 6032690894,
+        "resource_state": 1
+      },
+      "athlete": {
+        "id": 77615538,
+        "resource_state": 1
+      },
+      "elapsed_time": 96,
+      "moving_time": 97,
+      "start_date": "2021-09-28T14:01:11Z",
+      "start_date_local": "2021-09-28T16:01:11Z",
+      "distance": 400,
+      "start_index": 710,
+      "end_index": 738,
+      "pr_rank": null,
+      "achievements": []
+    },
+    {
+      "id": 14250234451,
+      "resource_state": 2,
+      "name": "1/2 mile",
+      "activity": {
+        "id": 6032690894,
+        "resource_state": 1
+      },
+      "athlete": {
+        "id": 77615538,
+        "resource_state": 1
+      },
+      "elapsed_time": 213,
+      "moving_time": 214,
+      "start_date": "2021-09-28T13:59:14Z",
+      "start_date_local": "2021-09-28T15:59:14Z",
+      "distance": 805,
+      "start_index": 682,
+      "end_index": 738,
+      "pr_rank": null,
+      "achievements": []
+    },
+    {
+      "id": 14250234465,
+      "resource_state": 2,
+      "name": "1k",
+      "activity": {
+        "id": 6032690894,
+        "resource_state": 1
+      },
+      "athlete": {
+        "id": 77615538,
+        "resource_state": 1
+      },
+      "elapsed_time": 274,
+      "moving_time": 275,
+      "start_date": "2021-09-28T13:58:18Z",
+      "start_date_local": "2021-09-28T15:58:18Z",
+      "distance": 1000,
+      "start_index": 670,
+      "end_index": 739,
+      "pr_rank": null,
+      "achievements": []
+    },
+    {
+      "id": 14250234485,
+      "resource_state": 2,
+      "name": "1 mile",
+      "activity": {
+        "id": 6032690894,
+        "resource_state": 1
+      },
+      "athlete": {
+        "id": 77615538,
+        "resource_state": 1
+      },
+      "elapsed_time": 457,
+      "moving_time": 459,
+      "start_date": "2021-09-28T13:33:27Z",
+      "start_date_local": "2021-09-28T15:33:27Z",
+      "distance": 1609,
+      "start_index": 333,
+      "end_index": 437,
+      "pr_rank": null,
+      "achievements": []
+    },
+    {
+      "id": 14250234501,
+      "resource_state": 2,
+      "name": "2 mile",
+      "activity": {
+        "id": 6032690894,
+        "resource_state": 1
+      },
+      "athlete": {
+        "id": 77615538,
+        "resource_state": 1
+      },
+      "elapsed_time": 945,
+      "moving_time": 946,
+      "start_date": "2021-09-28T13:46:32Z",
+      "start_date_local": "2021-09-28T15:46:32Z",
+      "distance": 3219,
+      "start_index": 502,
+      "end_index": 730,
+      "pr_rank": null,
+      "achievements": []
+    },
+    {
+      "id": 14250234521,
+      "resource_state": 2,
+      "name": "5k",
+      "activity": {
+        "id": 6032690894,
+        "resource_state": 1
+      },
+      "athlete": {
+        "id": 77615538,
+        "resource_state": 1
+      },
+      "elapsed_time": 1485,
+      "moving_time": 1486,
+      "start_date": "2021-09-28T13:37:32Z",
+      "start_date_local": "2021-09-28T15:37:32Z",
+      "distance": 5000,
+      "start_index": 386,
+      "end_index": 730,
+      "pr_rank": null,
+      "achievements": []
+    },
+    {
+      "id": 14250234540,
+      "resource_state": 2,
+      "name": "10k",
+      "activity": {
+        "id": 6032690894,
+        "resource_state": 1
+      },
+      "athlete": {
+        "id": 77615538,
+        "resource_state": 1
+      },
+      "elapsed_time": 3099,
+      "moving_time": 3075,
+      "start_date": "2021-09-28T13:11:21Z",
+      "start_date_local": "2021-09-28T15:11:21Z",
+      "distance": 10000,
+      "start_index": 1,
+      "end_index": 740,
+      "pr_rank": null,
+      "achievements": []
+    }
+  ]

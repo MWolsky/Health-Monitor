@@ -1,0 +1,25 @@
+[
+  {
+    "count": 1,
+    "distance": 12972.900390625,
+    "moving_time": 2255,
+    "elapsed_time": 2420,
+    "elevation_gain": 133.26856994628906,
+    "achievement_count": 0
+},
+  {
+    "count": 2,
+    "distance": 32481,
+    "moving_time": 5797,
+    "elapsed_time": 6736,
+    "elevation_gain": 221
+},
+  {
+    "count": 2,
+    "distance": 3300,
+    "moving_time": 4279,
+    "elapsed_time": 4299,
+    "elevation_gain": 0,
+    "achievement_count": 0
+}
+  ]
