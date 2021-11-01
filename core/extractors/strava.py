@@ -178,34 +178,3 @@ class Strava(ApiResource):
         )
         token = self.post_request(self.auth_url, data=payload, verify=False)
         return token
-
-
-if __name__ == "__main__":
-    test_activity = 6032690894
-    # # params = {'per_page': 200, 'page': 1}
-    strav = Strava()
-    print('Single activity')
-    single_activity = strav.single_activity(test_activity)
-    print('All activities')
-    all_activities = strav.activities(after='2020-01-01')
-    types = set([act['type'] for run in all_activities for act in run])
-    activity_types = {}
-    for i in types:
-        activity_types[f'{i}'] = [act for run in all_activities for act in run if act['type'] == i]
-    print('laps')
-    laps = strav.laps(test_activity)
-    print('Athlete me')
-    athlete_me = strav.athlete_me()
-    print('Zones')
-    athlete_zones = strav.athlete_zones()
-    print('Stats')
-    athlete_stats = strav.athlete_stats(strava.profile_id)
-    # obj = single_activity
-    # file_name = 'single_activity.json'
-    # with open(f'{file_name}', 'w') as f:
-    #     json.dump(obj, f)
-    # keys_single = list(single_activity.keys())
-    # keys_summary = list(activity_types['Run'][99].keys())
-    # keys_single_no_summary = [i for i in keys_single if i not in keys_summary]
-    # keys_summary_no_single = [i for i in keys_summary if i not in keys_single]
-    # single_activity_left = {k:v for k, v in single_activity.items() if k in keys_single_no_summary}
