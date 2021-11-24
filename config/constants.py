@@ -2,6 +2,7 @@ from dataclasses import dataclass
 from typing import List
 from pathlib import Path
 
+
 @dataclass
 class StravaResponseConfig:
     profile_id: int
@@ -212,5 +213,11 @@ strava_config = {
     ]
 }
 
+default_strava_cardio_training_types = [
+    'Swim',
+    'Ride',
+    'Run',
+    'Hike'
+]
 strava = StravaResponseConfig(**strava_config)
 local_csv_save_directory = Path('C:/projects/Health-Monitor-Tableau/')

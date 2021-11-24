@@ -1,5 +1,6 @@
-from config.constants import strava
-from typing import Dict
+from config.constants import strava, default_strava_cardio_training_types
+from typing import Dict, List, Union
+from core.transformers.strava_models import DetailedActivity, SummaryActivity
 
 
 class StravaFilter:
@@ -62,3 +63,25 @@ class StravaFilter:
         keys = strava.totals_keys
         filtered_response = {k: v for k, v in response.items() if k in keys}
         return filtered_response
+
+
+class StravaTrainingTypeFilter:
+    def apply_filter(self, activity: [Union[DetailedActivity, SummaryActivity]]):
+        raise NotImplementedError
+
+    def filter(self, activities: List[Union[DetailedActivity, SummaryActivity]]):
+        return list(filter(self.apply_filter, activities))
+
+
+class StravaWeightTrainingFilter(StravaTrainingTypeFilter):
+    def apply_filter(self, activity: [Union[DetailedActivity, SummaryActivity]]):
+        activity_type_filter = activity.type == 'WeightTraining'
+        filters = [activity_type_filter]
+        return all(filters)
+
+
+class StravaCardioTrainingFilter(StravaTrainingTypeFilter):
+    def apply_filter(self, activity: [Union[DetailedActivity, SummaryActivity]]):
+        activity_type_filter = activity.type in default_strava_cardio_training_types
+        filters = [activity_type_filter]
+        return all(filters)
