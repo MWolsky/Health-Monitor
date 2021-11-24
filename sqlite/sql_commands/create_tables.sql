@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS cardio (
-    [training_id] INT PRIMARY KEY,
+    [activity_id] INT PRIMARY KEY,
     [date] DATE NOT NULL,
     [name] NVARCHAR(255),
     [type] NVARCHAR(255) NOT NULL,
@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS cardio (
 
 CREATE TABLE IF NOT EXISTS laps (
     [lap_id] INT PRIMARY KEY,
-    [training_id] INT,
+    [activity_id] INT,
     [name] NVARCHAR(255),
     [average_cadence] real,
     [average_heartrate] real,
@@ -30,11 +30,13 @@ CREATE TABLE IF NOT EXISTS laps (
     [moving_time] INT,
     [split] INT,
     [total_elevation_gain] INT,
-    FOREIGN KEY ([training_id]) REFERENCES cardio([training_id])
+    [pace] real,
+    [difficulty_index] real,
+    FOREIGN KEY ([activity_id]) REFERENCES cardio([activity_id])
 );
 
 CREATE TABLE IF NOT EXISTS weights (
-    [training_id] INT PRIMARY KEY,
+    [activity_id] INT PRIMARY KEY,
     [date] DATE NOT NULL,
     [type] NVARCHAR(255) NOT NULL,
     [name] NVARCHAR(255),

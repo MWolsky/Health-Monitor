@@ -1,5 +1,6 @@
 import pytest
 from core.utils.helpers import load_test_resource
+from typing import List, Dict, Union
 
 
 @pytest.fixture()
@@ -59,4 +60,10 @@ def strava_models_segment():
 @pytest.fixture()
 def strava_models_totals_list():
     resource = load_test_resource('strava_totals_list')
+    return resource
+
+
+@pytest.fixture()
+def strava_models_detailed_activity_list():
+    resource = load_test_resource('strava_detailed_activity_list.json')
     return resource

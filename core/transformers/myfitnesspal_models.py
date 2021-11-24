@@ -28,3 +28,4 @@ class MyDay:
             sugar_net=self.day.totals['sugar']-self.day.goals['sugar']
         )
         return day
+

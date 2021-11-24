@@ -3,6 +3,7 @@ from core.transformers.strava_models import *
 from core.transformers.filters import StravaFilter
 from tests.conftest import *
 
+
 class TestStravaModels:
     def test_summary_activity(self, strava_models_summary_activity_list):
         strava_filter = StravaFilter()

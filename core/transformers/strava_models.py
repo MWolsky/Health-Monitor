@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import List, Dict, Union, Optional
 
 
@@ -54,15 +54,15 @@ class DetailedActivity:
     perceived_exertion: str
     prefer_perceived_exertion: str
     segment_efforts: List['SegmentEffort']
-    splits_metric: List['Split']
-    splits_standard: List['Split']
-    laps: List['Lap']
-    best_efforts: List['BestEffort']
     photos: dict
     stats_visibility: List[Dict]
     hide_from_home: bool
-    similar_activities: dict
     available_zones: list
+    laps: List['Lap'] = None
+    similar_activities: dict = None
+    splits_metric: List['Split'] = None
+    splits_standard: List['Split'] = None
+    best_efforts: List['BestEffort'] = None
     device_name: Optional[str] = None
     average_heartrate: Optional[float] = None
     max_heartrate: Optional[float] = None
@@ -73,6 +73,7 @@ class DetailedActivity:
     elev_high: Optional[float] = None
     elev_low: Optional[float] = None
     workout_type: Optional[str] = None
+
 
 
 @dataclass
@@ -142,6 +143,40 @@ class Lap:
     split: int
     pace_zone: int
 
+    @property
+    def pace(self):
+        """returns pace in mins / km"""
+        return 1000 / self.average_speed / 60
+
+    @property
+    def difficulty_index(self):
+        lap_distance_weight = 0.001
+        pace_weight = 0.5
+        elevation_gain_weight = 0.25
+        lap_index_weight = 0.249
+        pace_points = self.pace_points(self.pace)
+
+        difficulty_index = self.distance * lap_distance_weight + \
+            pace_points * pace_weight + self.total_elevation_gain * elevation_gain_weight + \
+            self.lap_index * lap_index_weight
+        return difficulty_index
+
+    @staticmethod
+    def pace_points(pace: float):
+        if pace >= 6.5:
+            return 0.1
+        elif 6 <= pace < 6.5:
+            return 0.5
+        elif 5.5 <= pace < 6:
+            return 1
+        elif 5 <= pace < 5.5:
+            return 3
+        elif 4.5 <= pace < 5:
+            return 6
+        elif 4.0 <= pace < 4.5:
+            return 9
+        else:
+            return 10
 
 @dataclass
 class BestEffort:
