@@ -1,3 +1,4 @@
+import pandas as pd
 import pytest
 from core.utils.helpers import load_test_resource
 from typing import List, Dict, Union
@@ -67,3 +68,29 @@ def strava_models_totals_list():
 def strava_models_detailed_activity_list():
     resource = load_test_resource('strava_detailed_activity_list.json')
     return resource
+
+
+@pytest.fixture()
+def input_dataframe():
+    rows = []
+    for i in range(0, 10):
+        data = {
+            'column1': f'a_{i}',
+            'column2': f'b_{i}',
+            'column3': f'c_{i}',
+        }
+        rows.append(data)
+    return pd.DataFrame(rows)
+
+
+@pytest.fixture()
+def target_dataframe():
+    rows = []
+    for i in range(8, 20):
+        data = {
+            'col1': f'a_{i}',
+            'col2': f'b_{i}',
+            'col3': f'c_{i}',
+        }
+        rows.append(data)
+    return pd.DataFrame(rows)

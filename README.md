@@ -1,4 +1,5 @@
 # Health-Monitor
-Health-Monitor is a ETL project written in python3 and sql to collect data and visualize it in Tableau / PowerBI or other tool, so the progress can be tracked and insights gained.
+Extract data from Strava and MyFitnessPal APIs. Store it in tabular format in SQLite database.
 TODO:
-CALORIES TABLE MORE DETAILED - TO LEVEL OF MEALs
+Inserting functions to database
+tests: data processing, and others

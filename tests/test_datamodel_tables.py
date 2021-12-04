@@ -25,6 +25,8 @@ class TestDataModelTables:
         assert not table['activity_id'].isnull().values.any()
         assert all(isinstance(x, int) for x in table.activity_id)
         assert all(x for x in table.type if x in default_strava_cardio_training_types)
+        assert len(table['activity_start_time'][0]) == 8
+        assert len(table['date'][0]) == 10
 
     def test_laps_table(self, strava_models_lap_list):
         strava_filter = StravaFilter()
@@ -58,6 +60,8 @@ class TestDataModelTables:
         assert not table['activity_id'].isnull().values.any()
         assert all(isinstance(x, int) for x in table.activity_id)
         assert all(x for x in table.type if x == 'WeightTraining')
+        assert len(table['activity_start_time'][0]) == 8
+        assert len(table['date'][0]) == 10
 
     def test_date_table(self):
         start_date = '2000-01-01'
@@ -67,4 +71,4 @@ class TestDataModelTables:
 
         assert isinstance(date_table, pd.DataFrame)
         assert len(date_table) == 3654
-        assert all(isinstance(x, datetime.date) for x in date_table.date)
+        assert all(isinstance(x, str) for x in date_table.date)

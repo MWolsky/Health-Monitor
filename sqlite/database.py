@@ -1,12 +1,15 @@
+from core.utils.helpers import open_sql_file
+from config.constants import database_file_storage
 import sqlite3 as sql3
 from typing import List, Union, Dict, Tuple
-from core.utils.helpers import open_sql_file
+from pathlib import Path
+import pandas as pd
 from logging import getLogger
 logger = getLogger(__name__)
 
 
-class SqliteDataBase:
-    def __init__(self, name: str) -> None:
+class SqliteDatabase:
+    def __init__(self, name: Path) -> None:
         self.con = sql3.connect(f'{name}.db')
         self.cur = self.cursor()
 
@@ -66,9 +69,9 @@ class SqliteDataBase:
         self.execute("SELECT * FROM sqlite_master WHERE type='index';")
         return self.cur.fetchall()
 
-    def drop_table(self, tablename: str):
+    def drop_table(self, table_name: str):
         """Drops given table"""
-        self.execute(f"DROP TABLE {tablename}")
+        self.execute(f"DROP TABLE {table_name};")
 
     def drop_all_table(self):
         tables = self.list_tables()
@@ -77,12 +80,17 @@ class SqliteDataBase:
             logger.info(f'Dropping: {i[1]} table')
             self.drop_table(i[1])
 
+    def insert_pandas(self, table_name: str, df: pd.DataFrame):
+        df.to_sql(table_name, self.con, if_exists='append', index=False)
+
+    def select_all(self, table_name: str):
+        """Selects all columns all rows from given table"""
+        return pd.read_sql(f"SELECT * FROM {table_name}", self.con)
 
 
-
-class HealthMonitorSQLiteDB(SqliteDataBase):
+class HealthMonitorSQLiteDB(SqliteDatabase):
     def __init__(self) -> None:
-        super().__init__('HealthMonitor')
+        super().__init__(database_file_storage)
         self.con.execute('PRAGMA foreign_keys = 1')
 
     def create_tables(self) -> None:

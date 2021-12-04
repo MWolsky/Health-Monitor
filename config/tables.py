@@ -3,6 +3,7 @@ from dataclasses import dataclass
 _cardio_table_config_fields = {
     'activity_id': 'activity_id',
     'date': 'date',
+    'activity_start_time': 'activity_start_time',
     'type': 'type',
     'distance': 'distance',
     'name': 'name',
@@ -36,6 +37,7 @@ _laps_table_config_fields = {
 _weights_table_config_fields = {
     'activity_id': 'activity_id',
     'date': 'date',
+    'activity_start_time': 'activity_start_time',
     'type': 'type',
     'name': 'name',
     'average_heartrate': 'average_heartrate',
@@ -50,6 +52,7 @@ _weights_table_config_fields = {
 class WeightsConfig:
     activity_id: str
     date: str
+    activity_start_time: str
     type: str
     name: str
     average_heartrate: str
@@ -63,6 +66,7 @@ class WeightsConfig:
 class CardioConfig:
     activity_id: str
     date: str
+    activity_start_time: str
     type: str
     distance: str
     name: str

@@ -30,6 +30,14 @@ class SummaryActivity:
     elev_low: Optional[float] = None
     workout_type: Optional[str] = None
 
+    @property
+    def activity_date(self):
+        return self.start_date_local[:10]
+
+    @property
+    def activity_time(self):
+        return self.start_date_local[11:-1]
+
 
 @dataclass
 class DetailedActivity:
@@ -74,7 +82,13 @@ class DetailedActivity:
     elev_low: Optional[float] = None
     workout_type: Optional[str] = None
 
+    @property
+    def activity_date(self):
+        return self.start_date_local[:10]
 
+    @property
+    def activity_time(self):
+        return self.start_date_local[11:-1]
 
 @dataclass
 class Map:

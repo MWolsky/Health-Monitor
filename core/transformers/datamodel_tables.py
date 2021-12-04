@@ -17,7 +17,8 @@ class CardioTable:
         for act in self.cardio_detailed_activities:
             row = {
                 f'{self.cardio_config.activity_id}': act.id,
-                f'{self.cardio_config.date}': act.start_date,
+                f'{self.cardio_config.date}': act.activity_date,
+                f'{self.cardio_config.activity_start_time}': act.activity_time,
                 f'{self.cardio_config.type}': act.type,
                 f'{self.cardio_config.distance}': act.distance,
                 f'{self.cardio_config.name}': act.name,
@@ -74,7 +75,8 @@ class WeightsTable:
         for training in self.weights_activities:
             row = {
                 f'{self.weights_config.activity_id}': training.id,
-                f'{self.weights_config.date}': training.start_date,
+                f'{self.weights_config.date}': training.activity_date,
+                f'{self.weights_config.activity_start_time}': training.activity_time,
                 f'{self.weights_config.type}': training.type,
                 f'{self.weights_config.name}': training.name,
                 f'{self.weights_config.average_heartrate}': training.average_heartrate,
@@ -92,7 +94,15 @@ class CaloriesTable:
         self.days = days
 
     def calories_table(self):
-        pass
+        return pd.DataFrame([day.flat_day() for day in self.days])
+
+
+class MealsDailyTable:
+    def __init__(self, days: List[MyDay]):
+        self.days = days
+
+    def meals_table(self):
+        return pd.DataFrame([day.flat_meals() for day in self.days])
 
 
 class DateTable:
@@ -106,5 +116,5 @@ class DateTable:
         table['month'] = table.date.dt.month
         table['day'] = table.date.dt.day
 
-        table['date'] = table['date'].dt.date
+        table['date'] = table['date'].dt.strftime('%Y-%m-%d')
         return table
