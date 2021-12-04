@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from typing import List
 from pathlib import Path
+from core.utils.directories import project_root
 
 
 @dataclass
@@ -221,3 +222,6 @@ default_strava_cardio_training_types = [
 ]
 strava = StravaResponseConfig(**strava_config)
 local_csv_save_directory = Path('C:/projects/Health-Monitor-Tableau/')
+database_file_storage = Path(project_root().joinpath('HealthMonitor'))
+project_start = '2015-01-01'
+project_end = '2030-01-01'

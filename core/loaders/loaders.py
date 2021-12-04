@@ -16,5 +16,5 @@ class CsvLoader:
             header=True,
             index=False,
             encoding='utf-8-sig',
-            date_format='%Y%m%d'
+            date_format='%Y-%m-%d'
         )

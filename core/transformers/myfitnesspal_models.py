@@ -1,4 +1,4 @@
-from myfitnesspal.day import Day
+from myfitnesspal.day import Day, Meal, Entry
 
 
 class MyDay:
@@ -25,7 +25,33 @@ class MyDay:
             fat_net=self.day.totals['fat']-self.day.goals['fat'],
             protein_net=self.day.totals['protein']-self.day.goals['protein'],
             sodium_net=self.day.totals['sodium']-self.day.goals['sodium'],
-            sugar_net=self.day.totals['sugar']-self.day.goals['sugar']
+            sugar_net=self.day.totals['sugar']-self.day.goals['sugar'],
+            complete_day=1 if self.day.complete is True else 0
         )
         return day
+
+    def flat_meals(self):
+        meals = []
+        for meal in self.day.meals:
+            meal: Meal
+            for entry in meal:
+                entry: Entry
+                totals: dict = entry.totals
+                entry_row = {
+                    "date": self.day.date,
+                    "meal_type": meal.name,
+                    "food_name": entry.name,
+                    "total_calories":  totals['calories'],
+                    "total_carbohydrates": totals['carbohydrates'],
+                    "total_fat": totals['fat'],
+                    "total_protein": totals['protein'],
+                    "total_sodium": totals['sodium'],
+                    "total_sugar": totals['sugar'],
+                    "quantity": entry.quantity,
+                    "unit": entry.unit
+                }
+                meals.append(entry_row)
+        return meals
+
+
 

@@ -1,7 +1,6 @@
 import pytest
 from core.transformers.strava_models import *
 from core.transformers.filters import StravaFilter
-from tests.conftest import *
 
 
 class TestStravaModels:
@@ -11,6 +10,8 @@ class TestStravaModels:
         object_list = [SummaryActivity(**activity) for activity in data]
 
         assert all(isinstance(obj, SummaryActivity) for obj in object_list)
+        assert all(len(obj.activity_time) == 8 for obj in object_list)
+        assert all(len(obj.activity_date) == 10 for obj in object_list)
 
     def test_detailed_activity(self, strava_models_detailed_activity):
         strava_filter = StravaFilter()
@@ -18,6 +19,8 @@ class TestStravaModels:
         obj = DetailedActivity(**data)
 
         assert isinstance(obj, DetailedActivity)
+        assert obj.activity_date == '2021-09-28'
+        assert obj.activity_time == '15:11:20'
 
     def test_map(self, strava_models_map):
         strava_filter = StravaFilter()

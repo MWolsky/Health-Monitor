@@ -23,4 +23,3 @@ class StravaExtractor:
         filtered = self.filter.filter_detailed_activity(detailed_activity)
         detailed_activity_obj = DetailedActivity(**filtered)
         return detailed_activity_obj
-
