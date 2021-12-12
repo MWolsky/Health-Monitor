@@ -59,6 +59,7 @@ CREATE TABLE calories (
     [goal_sodium] INT,
     [goal_sugar] INT,
     [total_calories] INT,
+    [exercise_adjustment] INT,
     [total_carbohydrates] INT,
     [total_fat] INT,
     [total_protein] INT,
@@ -85,14 +86,16 @@ CREATE TABLE meals_daily (
     [total_sodium]  real,
     [total_sugar]    real,
     [quantity] real,
-    [unit] NVARCHAR(255)
+    [unit] NVARCHAR(255),
+    FOREIGN KEY ([date]) REFERENCES date_table([date])
 );
 
 CREATE TABLE supplements (
     [date] DATE NOT NULL,
     [supplement] NVARCHAR(255) NOT NULL,
     [amount] INT NOT NULL,
-    PRIMARY KEY ([date], [supplement])
+    PRIMARY KEY ([date], [supplement]),
+    FOREIGN KEY ([date]) REFERENCES date_table([date])
 );
 
 CREATE TABLE date_table (
