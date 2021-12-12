@@ -1,3 +1,6 @@
+import datetime
+import time
+
 from config.constants import project_start
 from core.executors.create_data_model_tables import strava_tables, my_fitness_pal_tables_since, date_table
 from sqlite.database import HealthMonitorSQLiteDB
@@ -12,11 +15,15 @@ def main():
     weights_table = tables_strava['weights']
     laps_table = tables_strava['laps']
     print('querying mfp')
-    tables_mfp = my_fitness_pal_tables_since(project_start)
+    tables_mfp = my_fitness_pal_tables_since(datetime.datetime.strptime(project_start, "%Y-%m-%d"))
     calories = tables_mfp['calories']
     meals = tables_mfp['meals']
     print('creating_tables')
     hm_db = HealthMonitorSQLiteDB()
+    print('dropping tables')
+    hm_db.drop_all_table()
+    time.sleep(5)
+    print('creating_tables')
     hm_db.create_tables()
 
     hm_db.insert_pandas('date_table', table_dates)

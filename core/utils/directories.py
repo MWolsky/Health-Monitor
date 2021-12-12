@@ -16,7 +16,7 @@ def sqlite_dir() -> Path:
 
 def utils_dir() -> Path:
     utils_dir = 'utils'
-    return join_dir(utils_dir)
+    return join_dir('core').joinpath(utils_dir)
 
 
 def sqlqueries_dir() -> Path:
@@ -37,3 +37,13 @@ def dir_test() -> Path:
 def resources_tests_dir() -> Path:
     resources_dir = 'resources'
     return dir_test().joinpath(resources_dir)
+
+
+def pyproject_toml_dir() -> Path:
+    pyproject_toml_dir = 'pyproject.toml'
+    return project_root().joinpath(pyproject_toml_dir)
+
+
+def strava_api_logs_dir() -> Path:
+    logs_strava_api_dir = 'logs_strava_api.json'
+    return utils_dir().joinpath(logs_strava_api_dir)

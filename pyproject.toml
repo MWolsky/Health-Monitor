@@ -13,6 +13,8 @@ python-dotenv = "^0.19.1"
 dataclass-wizard = "^0.15.2"
 typing-extensions = "^3.10.0"
 myfitnesspal = "^1.16.4"
+toml = "^0.10.2"
+freezegun = "^1.1.0"
 
 [tool.poetry.dev-dependencies]
 
@@ -24,3 +26,28 @@ build-backend = "poetry.core.masonry.api"
 markers = [
     "strava"
 ]
+
+# logging configuration
+
+[tool.logging]
+version = 1
+disable_existing_loggers = false
+
+[tool.logging.formatters.simple]
+format = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+
+[tool.logging.handlers.console]
+class = "logging.StreamHandler"
+level = "INFO"
+formatter = "simple"
+stream = "ext://sys.stdout"
+
+[tool.logging.root]
+level = "INFO"
+handlers = ["console"]
+
+[tool.logging.loggers.module1]
+level = "INFO"
+handler = ["console"]
+propagate = "yes"
+

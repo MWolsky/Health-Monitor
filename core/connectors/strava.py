@@ -1,17 +1,82 @@
+import datetime
+import logging
+import pytz
 import requests
-from secret_manager import StravaSecretManager
 import time
-from typing import Callable, List, Dict
-from core.utils.helpers import date_to_unix_timestamp
 import urllib3
+import atexit
+from secret_manager import StravaSecretManager
+from typing import Callable, List, Dict
+from core.utils.helpers import date_to_unix_timestamp, logging_config, sleep_till_tomorrow, \
+    sleep_till_next_quarter_of_hour, open_strava_logs, save_strava_logs, quarter_an_hour_timestamp_counter, \
+    daily_timestamp_counter, timestamp_log
+
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-from config.constants import strava
+logging_config()
 
 
-class ApiResource:
+class Strava:
+    rate_limits = {
+        'daily_requests': 1000,
+        'quarter_requests': 100
+    }
+
     def __init__(self) -> None:
         self.session = requests.Session()
+        self.base_url = 'https://www.strava.com/api/v3/'
+        self.auth_url = 'https://www.strava.com/oauth/token'
+        self.athlete_url = 'https://www.strava.com/api/v3/athlete/'
+        self.athlete_activities_url = f'{self.base_url}athlete/activities/'
+        self.activities_url = f'{self.base_url}activities/'
+        self.athlete_zones_url = f'{self.athlete_url}zones'
+        self.__secret_manager = StravaSecretManager()
+        self.access_token = None
+        self.token_expires_at = 0
+        self.requests_counter = [datetime.datetime.strptime(x, '%Y-%m-%d %H:%M:%S') for x in open_strava_logs()]
+        self.__logger = logging.getLogger(__name__)
+        self.delete_outdated_logs()
+        atexit.register(self.cleanup)
 
+    def cleanup(self):
+        save_strava_logs(self.requests_counter)
+
+    def delete_outdated_logs(self) -> None:
+        today = datetime.datetime.now(pytz.utc).replace(tzinfo=None).date()
+        relevant = [x for x in self.requests_counter if x.date() == today]
+        self.requests_counter = relevant
+
+    def check_for_limits_decorator(func: Callable) -> Callable:
+        def wrapper(self, *args, **kwargs):
+            daily_limit, daily_requests_made = daily_timestamp_counter(self.requests_counter, self.rate_limits['daily_requests']-1)
+            quarter_limit, quarter_requests_made = quarter_an_hour_timestamp_counter(self.requests_counter,
+                                                                                     self.rate_limits[
+                                                                                         'quarter_requests']-1)
+            if daily_limit and quarter_limit:
+                self.__logger.info(f'Making request...\nYou made {daily_requests_made} requests today '
+                                   f'and {quarter_requests_made} this quarter of an hour.')
+                res = func(self, *args, **kwargs)
+                self.requests_counter.append(timestamp_log())
+                return res
+            elif daily_limit and not quarter_limit:
+                self.__logger.warning(f'15 min rate limit reached! You made {quarter_requests_made} requests'
+                                      f' this quarter of an hour\n'
+                                      f'Program will be waiting till next quarter of an hour...')
+                sleep_till_next_quarter_of_hour()
+                self.delete_outdated_logs()
+                res = func(self, *args, **kwargs)
+                self.requests_counter.append(timestamp_log())
+                return res
+            elif (not daily_limit and quarter_limit) or (not daily_limit and not quarter_limit):
+                self.__logger.warning(f'Daily rate limit reached! You made {daily_requests_made} requests today.\n'
+                                      f'Program will be waiting till tomorrow utc. Consider killing the program!')
+                sleep_till_tomorrow()
+                self.delete_outdated_logs()
+                res = func(self, *args, **kwargs)
+                self.requests_counter.append(timestamp_log())
+                return res
+        return wrapper
+
+    @check_for_limits_decorator
     def get_request(self, url: str, **kwargs):
         with self.session as s:
             response = s.get(url, **kwargs)
@@ -20,7 +85,7 @@ class ApiResource:
 
     def get_request_paginated(self, url: str, after: str = None, before: str = None, **kwargs):
         """use after and before in yyyy-mm-dd format only in relevant endpoints. e.g. activities"""
-        params = {'per_page': 100, 'page': 1}
+        params = {'per_page': 200, 'page': 1}
         if after and not before:
             after_timestamp = date_to_unix_timestamp(after)
             params['after'] = after_timestamp
@@ -49,21 +114,6 @@ class ApiResource:
             response = s.post(url, **kwargs)
             response.raise_for_status()
         return response.json()
-
-
-class Strava(ApiResource):
-
-    def __init__(self) -> None:
-        super().__init__()
-        self.base_url = 'https://www.strava.com/api/v3/'
-        self.auth_url = 'https://www.strava.com/oauth/token'
-        self.athlete_url = 'https://www.strava.com/api/v3/athlete/'
-        self.athlete_activities_url = f'{self.base_url}athlete/activities/'
-        self.activities_url = f'{self.base_url}activities/'
-        self.athlete_zones_url = f'{self.athlete_url}zones'
-        self.__secret_manager = StravaSecretManager()
-        self.access_token = None
-        self.token_expires_at = 0
 
     def refresh_access_token_decorator(func: Callable):
         def wrapper(self, *args, **kwargs):
@@ -178,5 +228,3 @@ class Strava(ApiResource):
         )
         token = self.post_request(self.auth_url, data=payload, verify=False)
         return token
-
-

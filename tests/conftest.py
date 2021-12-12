@@ -66,7 +66,19 @@ def strava_models_totals_list():
 
 @pytest.fixture()
 def strava_models_detailed_activity_list():
-    resource = load_test_resource('strava_detailed_activity_list.json')
+    resource = load_test_resource('strava_detailed_activity_list')
+    return resource
+
+
+@pytest.fixture()
+def daily_timestamps():
+    resource = load_test_resource('daily_timestamps')
+    return resource
+
+
+@pytest.fixture()
+def quarter_hour_timestamps():
+    resource = load_test_resource('quarter_hour_timestamps.json')
     return resource
 
 

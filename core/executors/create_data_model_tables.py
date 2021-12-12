@@ -1,4 +1,5 @@
 import datetime
+
 from config.constants import project_start, project_end
 from core.transformers.filters import StravaFilter, StravaCardioTrainingFilter, StravaWeightTrainingFilter
 from core.transformers.datamodel_tables import CardioTable, LapsTable, WeightsTable, DateTable, CaloriesTable,\
@@ -21,10 +22,12 @@ def strava_tables(after: str = None, before: str = None):
     summary_activities = strava.all_summary_activities(after, before)
     activity_ids = [strava.get_activity_id_from_summary_activity(i) for i in summary_activities]
     detailed_activities = [strava.detailed_activity(i) for i in activity_ids]
+    # with open("detailed_activities.json") as f:
+    #     detailed_activities = [DetailedActivity(**x) for x in json.load(f)]
     cardio_filter = StravaCardioTrainingFilter()
     weights_filter = StravaWeightTrainingFilter()
     cardio_activities = cardio_filter.filter(detailed_activities)
-    cardio_laps = [i.laps for i in cardio_activities]
+    cardio_laps = [i.laps for i in cardio_activities if i.laps is not None]
     cardio_laps_flatten = [strava_response_filter.filter_lap(lap) for act in cardio_laps for lap in act]
     cardio_laps_obj = [Lap(**i) for i in cardio_laps_flatten]
     weights_activities = weights_filter.filter(detailed_activities)
@@ -57,8 +60,8 @@ def my_fitness_pal_tables_since(start_date: datetime.datetime):
     mfp = MfpExtractor()
     history = mfp.get_history_since(start_date)
     my_days = [MyDay(day) for day in history]
-    meals = MealsDailyTable(my_days)
-    calories = CaloriesTable(my_days)
+    meals = MealsDailyTable(my_days).meals_table()
+    calories = CaloriesTable(my_days).calories_table()
     return {
         'meals': meals,
         'calories': calories

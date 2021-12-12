@@ -150,12 +150,12 @@ class Lap:
     total_elevation_gain: Union[int, float]
     average_speed: Union[int, float]
     max_speed: Union[int, float]
-    average_cadence: Union[int, float]
-    average_heartrate: Union[int, float]
-    max_heartrate: Union[int, float]
     lap_index: int
     split: int
-    pace_zone: int
+    average_heartrate: Union[int, float] = None
+    max_heartrate: Union[int, float] = None
+    pace_zone: int = None
+    average_cadence: Union[int, float] = None
 
     @property
     def pace(self):
