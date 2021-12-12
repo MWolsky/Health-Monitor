@@ -102,7 +102,10 @@ class MealsDailyTable:
         self.days = days
 
     def meals_table(self):
-        return pd.DataFrame([day.flat_meals() for day in self.days])
+        meals_per_day = [day.flat_meals() for day in self.days]
+        meals_all_together = [meal for day in meals_per_day for meal in day]
+        x = pd.DataFrame(meals_all_together)
+        return x
 
 
 class DateTable:
