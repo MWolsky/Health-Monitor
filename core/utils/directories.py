@@ -46,4 +46,4 @@ def pyproject_toml_dir() -> Path:
 
 def strava_api_logs_dir() -> Path:
     logs_strava_api_dir = 'logs_strava_api.json'
-    return utils_dir().joinpath(logs_strava_api_dir)
+    return project_root().joinpath(logs_strava_api_dir)

@@ -133,3 +133,6 @@ wip.py
 
 #sqlite database
 HealthMonitor.db
+
+#strava api logs
+logs_strava_api.json
